@@ -33,7 +33,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=150)
     description = models.TextField(blank=True)
-    
+
     #location = models.ForeignKey
     # (Location,
     #  on_delete=models.CASCADE,
@@ -51,7 +51,7 @@ class Post(models.Model):
         max_length=150,
         blank=True,
         null=True,
-        default=normal,
+        default=None,
         choices=categories
     )
 
