@@ -554,7 +554,3 @@ Here's a refined guide for deploying your application to Heroku, specifically ta
      ```
 
 ---
-
-### Summary
-
-This guide provides a streamlined approach to deploying a Django REST Framework application on Heroku, including Cloudinary for handling image storage. Ensure you thoroughly test your application after deployment. If you have further questions or need assistance, feel free to ask!
