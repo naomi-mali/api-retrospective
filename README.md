@@ -1,131 +1,560 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Retrospective
 
-Welcome Timea Mali,
+## Project Overview
+Retrospective is a unique social media platform designed to showcase Polaroid-style photos and albums, allowing users to share significant moments from their lives from their own perspectives. This platform aims to create a community centered around gratitude, positivity, and the appreciation of life's highlights. Unlike typical social media where every detail is shared, Retrospective focuses on meaningful memories that users want to cherish and remember.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Key Features
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+### **Polaroid Photo Sharing**
+- **Capture and Share**: Upload Polaroid-style photos that reflect your most cherished memories. Each photo can be accompanied by a heartfelt caption that adds context and emotion to the moment.
+- **Editing Tools**: Use built-in filters and editing options to enhance your photos and give them that classic Polaroid feel, ensuring they stand out in your profile.
 
-## Gitpod Reminders
+### **Interactive Community**
+- **Engagement**: Interact with other users by liking and commenting on their Polaroid photos, fostering connections through shared experiences.
+- **Notifications**: Stay updated with real-time notifications when someone engages with your posts or comments on your highlights.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### **Albums for Special Moments**
+- **Create Custom Albums**: Organize your photos into themed albums (e.g., vacations, celebrations, milestones) to tell a cohesive story and preserve your memories in a structured way.
+- **Private and Public Options**: Choose whether your albums are public for everyone to see or private, allowing only selected friends and family to view them.
 
-`python3 -m http.server`
+### **Follow Friends and Family**
+- **Building Connections**: Follow friends, family, and other users to stay updated on their significant moments, creating a personalized feed filled with meaningful content.
+- **Mutual Following**: Receive follow requests and manage your connections easily to cultivate a supportive community.
 
-A blue button should appear to click: _Make Public_,
+### **Search and Discovery**
+- **Keyword Search**: Discover content that resonates with you by searching for specific keywords, themes, or moments.
+- **Category Browsing**: Explore photos and albums categorized by events, seasons, or emotions, making it easy to find inspiration and connect with like-minded individuals.
 
-Another blue button should appear to click: _Open Browser_.
+### **User Profiles**
+- **Personalized Profiles**: Create a unique profile that showcases your favorite Polaroid photos and albums, allowing you to express your individuality and perspective on life.
+- **Statistics and Highlights**: View engagement metrics on your posts and see which moments resonate most with your audience.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+### **Community Guidelines**
+- **Positive Environment**: Retrospective is built on the principles of respect and support. Users are encouraged to share meaningful moments and uplift one another, creating a positive online atmosphere.
+- **Reporting and Moderation**: A system is in place for reporting inappropriate content, ensuring that the community guidelines are upheld and that the platform remains a safe space for all users.
 
-A blue button should appear to click: _Make Public_,
+## Purpose
+Retrospective aims to provide a dedicated space for users to celebrate life’s special moments, encouraging reflection and connection through the art of photography. This platform is not about sharing every mundane detail but focuses on highlighting the experiences that shape our lives, allowing users to create a lasting legacy of their most treasured memories.
 
-Another blue button should appear to click: _Open Browser_.
+# Retrospective
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Purpose and Strategy
+Retrospective aims to provide a dedicated space for users to celebrate life’s special moments, encouraging reflection and connection through the art of photography. This platform focuses on highlighting the experiences that shape our lives rather than sharing every mundane detail, allowing users to create a lasting legacy of their most treasured memories.
 
-To log into the Heroku toolbelt CLI:
+Designed to foster gratitude and enhance users' perspectives on life, Retrospective draws inspiration from my own Polaroid album, which is a replica of one my mother used to have when she was young. This project seeks to evoke comfort and a sense of nostalgia. The retro style of the platform pays homage to the past while offering a reliable and unique space for users to celebrate their lives.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+By blending purpose with strategy, Retrospective not only serves as a digital gallery for cherished moments but also cultivates a supportive community where users can reflect on and share what truly matters.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+#### User Stories
 
-### Connecting your Mongo database
+For more details on the user stories go to the [projects KANBAN board](https://github.com/users/naomi-mali/projects/11)
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+# Retrospective Development Plan
 
-------
+## First Sprint
+- **Create an Account & Login**
+  - Landing Page
+  - Navbar
+  - Create Account
+  - Log In
+  - Log Out
+  - Remain Logged In
 
-## Release History
+## Second Sprint
+- **Creating Retrospectives**
+  - Create Retrospective
+  - View Retrospective
+  - Update a Retrospective
+  - Delete Retrospective
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- **Retrospective Feeds**
+  - Retrospectives Feed
+  - Liked Retrospectives
+  - Discover Retrospectives
 
-**June 18, 2024,** Add Mongo back into template
+## Third Sprint
+- **Profile Pages**
+  - Edit Profile
+  - Change Password
+  - Who to Follow List
+  - User Profiles
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+- **Interactivity**
+  - Like/Un-like a Retrospective
+  - Comment on a Retrospective
+  - View Comments
+  - Edit a Comment
+  - Delete a Comment
+  - Follow/Unfollow a User
 
-**May 28 2024:** Fix Mongo and Links installs
+## Fourth Sprint
+- **General**
+  - Contact Form
+  - Responsive Site
+  - Simple User Navigation
+  - 404 Page
 
-**April 26 2024:** Update node version to 16
+- **User Engagement Features**
+  - Update Username and Password
+  - Create Posts
+  - View Posts of Followed Users
+  - Edit Post
+  - Delete a Post
+  - Create and List Comments
+  - View Comments
+  - Edit Comment
+  - Delete Comments
+  - Like a Post
+  - View Profile Page
+  - Profile List
+  - Search Posts by Keyword
+  - Messaging
+  - View Liked Posts
+  - View Activity Feed
+  - Report Post for Inappropriate Content
+  - Report a Comment
+  - Tag Users in Comments
+  - Add Post Location
+  - Infinite Scroll (for Posts and Comments)
+  - Add Google Cloud Storage for Static Images
+  - Messaging - Chat
+  - Filter Messages
+  - Most Followed Profiles
+  - Landing Page
+  - Log Out Setup
+  - Navigation - Conditional Rendering
+  - Add Site Favicon
+  - User Profile - User Stats
+  - Create Contact
+  - View a Post
+  - Navigation
+  - Search Profile
+  - Routing
+  - Avatar
 
-**September 20 2023:** Update Python version to 3.9.17.
+This plan outlines the sprints needed for the development of Retrospective, with a clear focus on user account management, content creation, interaction features, and overall site functionality. Each sprint builds on the previous one, gradually enhancing the platform's capabilities while ensuring a seamless user experience.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+**API Endpoints with Tied User Stories**
 
 ---
 
-Happy coding!
+**User Management**
+
+1. **User Registration & Login**
+   - **User Story:** *As a user, I can create an account and log in so that I can access platform features.*
+   - **Endpoints:**
+     - **POST /api/register** - Create new account.
+     - **POST /api/login** - Authenticate and log in user.
+     - **POST /api/logout** - End user session.
+
+2. **Edit Profile**
+   - **User Story:** *As a user, I can edit my profile so that I can update my personal information.*
+   - **Endpoints:**
+     - **GET /api/user/profile** - Fetch logged-in user profile.
+     - **PUT /api/user/update** - Update username, bio, profile picture.
+     - **PUT /api/user/change-password** - Securely change password.
+
+3. **Delete Account**
+   - **User Story:** *As a user, I can delete my account so that I can remove my profile and content.*
+   - **Endpoint:**
+     - **DELETE /api/user/delete** - Delete account and associated data.
+
+---
+
+**Retrospective Posts**
+
+4. **Create and Manage Retrospectives**
+   - **User Story:** *As a user, I can create, view, update, and delete retrospectives so that I can share significant moments.*
+   - **Endpoints:**
+     - **POST /api/retrospectives** - Create a new retrospective.
+     - **GET /api/retrospectives** - View list of retrospectives.
+     - **GET /api/retrospectives/:id** - View specific retrospective details.
+     - **PUT /api/retrospectives/:id** - Edit a retrospective.
+     - **DELETE /api/retrospectives/:id** - Delete a retrospective.
+
+5. **Add Post Location**
+   - **User Story:** *As a user, I can add a location to my retrospectives so they are contextualized geographically.*
+   - **Endpoint:**
+     - **GET /api/locations** - Fetch list of locations for tagging.
+
+---
+
+**Comments**
+
+6. **Comment on Retrospectives**
+   - **User Story:** *As a user, I can comment on retrospectives so that I can engage with content.*
+   - **Endpoints:**
+     - **POST /api/retrospectives/:id/comments** - Add comment to a retrospective.
+     - **GET /api/retrospectives/:id/comments** - Fetch comments for a specific retrospective.
+
+7. **Edit and Delete Comments**
+   - **User Story:** *As a user, I can edit and delete my comments so that I have control over my interactions.*
+   - **Endpoints:**
+     - **PUT /api/comments/:commentId** - Edit a comment.
+     - **DELETE /api/comments/:commentId** - Delete a comment.
+
+---
+
+**Engagement and Interactivity**
+
+8. **Like/Unlike Retrospectives**
+   - **User Story:** *As a user, I can like or unlike retrospectives so that I can show appreciation for content.*
+   - **Endpoints:**
+     - **POST /api/retrospectives/:id/like** - Like a retrospective.
+     - **DELETE /api/retrospectives/:id/unlike** - Unlike a retrospective.
+     - **GET /api/user/liked-retrospectives** - View retrospectives liked by user.
+
+9. **Follow/Unfollow Users**
+   - **User Story:** *As a user, I can follow and unfollow users to personalize my feed and build my community.*
+   - **Endpoints:**
+     - **POST /api/user/:id/follow** - Follow another user.
+     - **DELETE /api/user/:id/unfollow** - Unfollow a user.
+     - **GET /api/user/following** - View users the user is following.
+     - **GET /api/user/followers** - View user’s followers.
+
+10. **Tag Users in Comments**
+    - **User Story:** *As a user, I can tag users in my comments so they are notified and can engage in discussions.*
+    - **Endpoint:**
+      - **POST /api/retrospectives/:id/comments** (with tagging functionality).
+
+---
+
+**Profiles and Discovery**
+
+11. **Profile Management**
+    - **User Story:** *As a user, I can view and edit profiles to share and update personal information.*
+    - **Endpoints:**
+      - **GET /api/user/:id/profile** - View specific user’s profile by ID.
+      - **PUT /api/user/update** - Update user profile information.
+
+12. **View Suggested and Popular Profiles**
+    - **User Story:** *As a user, I can discover popular and suggested users so I can follow interesting profiles.*
+    - **Endpoints:**
+      - **GET /api/user/suggested** - Fetch suggested users list.
+      - **GET /api/popular-profiles** - Fetch list of most-followed profiles.
+
+---
+
+**Search and Discovery**
+
+13. **Search Retrospectives and Profiles**
+    - **User Story:** *As a user, I can search for retrospectives and profiles to find specific content and users.*
+    - **Endpoints:**
+      - **GET /api/search/retrospectives** - Search retrospectives by keyword.
+      - **GET /api/search/profiles** - Search profiles by username or keyword.
+
+14. **Discover Highlights**
+    - **User Story:** *As a user, I can explore a curated feed of highlights to find inspiration and new connections.*
+    - **Endpoint:**
+      - **GET /api/retrospectives/discover** - Discover a curated feed of retrospectives.
+
+---
+
+**Activity Feed and Notifications**
+
+15. **View Activity Feed**
+    - **User Story:** *As a user, I can see an activity feed of users I follow to stay updated on their interactions.*
+    - **Endpoint:**
+      - **GET /api/user/activity** - Fetch recent activity of followed users.
+
+---
+
+**Messaging**
+
+16. **Messaging and Conversations**
+    - **User Story:** *As a user, I can send and receive messages in real-time with other users.*
+    - **Endpoints:**
+      - **POST /api/messages** - Send messages to users.
+      - **GET /api/messages/conversations** - View conversations.
+      - **GET /api/messages/:conversationId** - View messages within a specific conversation.
+      - **GET /api/messages/unread** - Fetch count of unread messages.
+
+---
+
+**Reporting**
+
+17. **Report Inappropriate Content**
+    - **User Story:** *As a user, I can report inappropriate posts and comments to help maintain a positive community.*
+    - **Endpoints:**
+      - **POST /api/retrospectives/:id/report** - Report a retrospective.
+      - **POST /api/comments/:commentId/report** - Report a comment.
+
+---
+
+**Miscellaneous**
+
+18. **Image Upload and Google Cloud Storage Integration**
+    - **User Story:** *As a developer, I can integrate Cloudinary Cloud Storage to handle image uploads.*
+    - **Endpoint:**
+      - **POST /api/upload** - Upload images to Cloudinary Storage.
+
+19. **Contact Form**
+    - **User Story:** *As a user, I can submit a contact form to get support or make inquiries.*
+    - **Endpoint:**
+      - **POST /api/contact** - Submit a contact form request.
+
+### Security Implementation
+
+---
+
+### Permissions Class: *IsOwnerOrReadOnly*
+
+**User Story:**  
+*As a developer, I need to ensure that only content creators can modify or delete their posts, preserving content integrity and user privacy.*
+
+**Implementation:**  
+A permissions class called `IsOwnerOrReadOnly` was implemented to restrict edit and delete actions on retrospectives and comments to their respective creators. This class checks if the authenticated user is the creator of the content, allowing full access if they are, or limiting them to read-only access otherwise.
+
+---
+
+### Cloudinary Permissions for Service Account
+
+**User Story:**  
+*As a developer, I need to configure service account permissions on Cloudinary to ensure security and restrict access to only necessary resources.*
+
+**Implementation:**  
+Permissions were configured for Cloudinary service account interactions, ensuring secure image upload and retrieval functionality. The minimal permissions include:
+- **Create:** Permission to upload user images to Cloudinary storage.
+- **Read:** Permission to retrieve and display stored images on the platform.
+
+**Technologies**
+
+---
+
+- **Django**  
+  - Main framework used for developing the Retrospective application, enabling a robust and scalable backend.
+
+- **Django REST Framework (DRF)**  
+  - API development framework, used to create and manage the RESTful endpoints that support the application's functionalities.
+
+- **Cloudinary (GCP)**  
+  - Cloud provider used specifically for static image hosting via Cloudinary Storage, ensuring efficient and reliable media storage.
+
+- **Heroku**  
+  - Platform-as-a-Service (PaaS) used for hosting the Retrospective application, providing a managed environment to deploy and scale.
+
+- **Git**  
+  - Version control system, facilitating code management and collaboration through feature branching, commit tracking, and change history.
+
+- **GitHub**  
+  - Code repository for securely storing the code base, documentation, and versioned project history.
+
+  ### Libraries & Tools
+
+- [Cloudinary](https://cloudinary.com/) - Image storage
+- [Pillow](https://pypi.org/project/pillow/) - Image processing
+- [Django Rest Auth](https://www.django-rest-framework.org/api-guide/authentication/#django-rest-auth-dj-rest-auth) - Authentication
+- [Django AllAuth](https://docs.allauth.org/en/latest/index.html) - Authentication
+- [Psycopg2](https://pypi.org/project/psycopg2/2.9.3/) - Python PostgreSQL Database Adapter
+- [Gunicorn](https://pypi.org/project/gunicorn/20.1.0/) - Python WSGI HTTP Server
+- [PostgreSQL](https://www.postgresql.org/) - Database
+- [Lucid Chart](https://lucid.app/) - Database schema design
+- [Tables Generator](https://www.tablesgenerator.com/markdown_tables) - Mark Down Tables
+- [Table of Contents Generator](https://derlin.github.io/bitdowntoc/) - Table of Contents
+
+### Forking a GitHub Repository
+
+1. **Navigate to the GitHub Repository**:
+   - Go to the repository you want to fork. You can find it by searching for the project or entering the URL directly.
+
+2. **Click the Fork Button**:
+   - On the top right corner of the repository page, you will see a button labeled **Fork**. Click on this button.
+
+3. **Select Your Account**:
+   - If you are a member of multiple organizations, GitHub may prompt you to choose where to create the fork (your personal account or one of your organizations). Select your account.
+
+4. **Wait for the Process to Complete**:
+   - GitHub will create a duplicate of the repository in your account. This may take a few moments.
+
+5. **Access Your Fork**:
+   - Once the forking process is complete, you will be redirected to your copy of the repository. You can start working on it from here.
+
+### After Forking
+
+- **Clone the Forked Repository**:
+  - You can clone your forked repository to your local machine using the following command:
+    ```bash
+    git clone https://github.com/naomi-mali/api-retrospective
+    ```
+  - Replace `your-username` and `repository-name` with your GitHub username and the name of the repository.
+
+- **Make Changes**:
+  - You can now make changes to your local copy of the repository.
+
+- **Push Changes**:
+  - After making changes, commit them and push to your fork:
+    ```bash
+    git add .
+    git commit -m "Your commit message"
+    git push origin main
+    ```
+  - Adjust the branch name if you are working on a different branch.
+
+- **Create a Pull Request** (Optional):
+  - If you want to propose your changes back to the original repository, you can create a pull request. Go to the original repository, and you will often see an option to create a pull request for the changes in your fork.
+
+Here's a comprehensive step-by-step guide on how to install and use Cloudinary to store photos in your Django project:
+-------
+
+## Cloudinary
+
+## Step 1: Sign Up for Cloudinary
+
+1. **Create an Account**: Go to [Cloudinary](https://cloudinary.com/) and sign up for a free account.
+2. **Get Your Credentials**: After signing up, navigate to your **Dashboard**. You will find your `API Key`, `API Secret`, and `Cloud Name` in the **Account Details** section.
+
+## Step 2: Install Required Packages
+
+Open your terminal and navigate to your Django project directory. Run the following command to install the necessary packages:
+
+```
+pip install django-cloudinary-storage  
+pip install Pillow
+```
+
+- **cloudinary**: The official Cloudinary library for Python.
+- **Pillow**: A Python Imaging Library for image processing.
+
+## Step 3: Configure Django Settings
+
+### Update `settings.py`
+
+1. **Open your Django project’s `settings.py` file**.
+
+2. **Add Cloudinary to Installed Apps**:
+
+   ```python
+   INSTALLED_APPS = [
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'cloudinary_storage',
+       'django.contrib.staticfiles',
+       'cloudinary',
+       'rest_framework',
+       # Your other apps
+   ]
+   ```
+
+3. **Add Cloudinary Configuration**:
+
+   At the bottom of your `settings.py`, add the following lines to configure Cloudinary:
+
+   ```python
+   import os
+   from pathlib import Path
+
+   if os.path.exists('env.py'):
+       import env  # This imports your environment variables
+
+   CLOUDINARY_STORAGE = {
+       'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
+   }
+
+   MEDIA_URL = 'https://res.cloudinary.com/<your_cloud_name>/media/'
+   DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+   ```
+
+
+### Create `env.py`
+
+1. **Create an `env.py` File**: In the root directory of your Django project, create a new file called `env.py`:
+
+   ```
+  env.py
+   ```
+
+2. **Add Your Cloudinary Configuration**: Open the `env.py` file and add your Cloudinary credentials:
+
+   ```
+   import os
+
+   os.environ['CLOUDINARY_URL'] = 'cloudinary://<API_KEY>:<API_SECRET>@2c9njk'  # Update with your Cloudinary credentials
+   ```
+
+   Replace `<API_KEY>`, `<API_SECRET>` with your actual credentials from Cloudinary.
+
+
+## Step 4: Create a Model for Image Uploads
+
+In one of your Django apps (e.g., `profiles` or `posts`), create a model to handle image uploads. For example:
+
+### Create a Model
+
+1. **Open your models file (e.g., `models.py`)**.
+
+2. **Define the model**:
+
+   ```python
+   from django.db import models
+
+   class Profile(models.Model):
+         image = models.ImageField(
+               upload_to='images/', default='../default_profile_mjfgzn'
+               )
+Here's a refined guide for deploying your application to Heroku, specifically tailored for a Django REST Framework project using Cloudinary for image storage:
+
+---
+
+### Heroku Deployment 
+
+1. **Create a Heroku Account**:
+   - Navigate to the [Heroku website](https://www.heroku.com/) and sign up for a free account if you don’t already have one.
+
+2. **Create a New App**:
+   - Once logged in, click the **New** button in the top right corner of the dashboard.
+   - Select **Create New App**.
+
+3. **Enter App Details**:
+   - **App Name**: Enter a unique name for your app.
+   - **Region**: Choose the appropriate region for your app.
+   - Click **Create App**.
+
+4. **Configure Environment Variables**:
+   - Go to the **Settings** tab.
+   - Click on **Reveal Config Vars**.
+   - Add the following configuration variables:
+     - **SECRET_KEY**: (Your secret key)
+     - **DATABASE_URL**: (This should already exist)
+     - **ALLOWED_HOST**: (e.g., `your-heroku-app-name.herokuapp.com`)
+     - **CLIENT_ORIGIN**: (URL for the client front-end React application that will be making requests to these APIs)
+     - **CLIENT_ORIGIN_DEV**: (Address of the local server used for previewing and testing UI during development)
+     - **CLOUDINARY_URL**: (e.g., `cloudinary://<API_KEY>:<API_SECRET>@<CLOUD_NAME>`)
+  
+6. **Deploy the Application**:
+   - Click on the **Deploy** tab.
+   - Scroll down to **Connect to GitHub** and sign in/authorize when prompted.
+   - In the search box, find the repository you want to deploy and click **Connect**.
+   - Scroll down to **Manual Deploy**, select the **main** branch (or your preferred branch), and click **Deploy Branch**.
+
+7. **Run Migrations**:
+   - After deployment, you may need to apply migrations. Run the following command:
+     ```
+     heroku run python manage.py migrate
+     ```
+
+8. **Collect Static Files**:
+   - If your application uses static files, run:
+     ```
+     heroku run python manage.py collectstatic --noinput
+     ```
+
+9. **Open Your Application**:
+   - Once everything is set up, open your deployed application in the browser:
+     ```
+     heroku open
+     ```
+
+10. **Monitor Logs**:
+   - If you encounter any issues, check the logs for debugging:
+     ```bash
+     heroku logs --tail
+     ```
+
+---
+
+### Summary
+
+This guide provides a streamlined approach to deploying a Django REST Framework application on Heroku, including Cloudinary for handling image storage. Ensure you thoroughly test your application after deployment. If you have further questions or need assistance, feel free to ask!
