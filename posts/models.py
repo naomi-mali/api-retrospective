@@ -47,6 +47,11 @@ class Post(models.Model):
         blank=True
     )
 
+    tagged_users = models.ManyToManyField(
+        User, related_name='tagged_posts',
+        blank=True
+        )
+
     category = models.CharField(
         max_length=150,
         blank=True,
@@ -54,6 +59,7 @@ class Post(models.Model):
         default=None,
         choices=categories
     )
+
 
     class Meta:
         ordering = ['-created_at']
