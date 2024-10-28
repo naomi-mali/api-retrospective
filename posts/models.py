@@ -33,6 +33,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=150)
     description = models.TextField(blank=True)
+    location = models.CharField(max_length=512, null=True, blank=True)
 
     #location = models.ForeignKey
     # (Location,
