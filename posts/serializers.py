@@ -8,7 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     tagged_users = serializers.SlugRelatedField(
-        queryset=User.objects.all(), slug_field='username', many=True, required=False
+        queryset=User.objects.all(), slug_field='username', many=True, required=False, allow_null=True
     )
     
     def validate_image(self, value):
@@ -35,3 +35,4 @@ class PostSerializer(serializers.ModelSerializer):
             'created_at', 'updated_at', 'title', 'description',
             'image', 'category', 'tagged_users',
         ]
+

@@ -27,6 +27,13 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Post.objects.all()
 
+    def perform_update(self, serializer):
+        tagged_users = self.request.data.get('tagged_users')
+        if tagged_users is not None and tagged_users == []:
+            serializer.save(tagged_users=[])
+        else:
+            serializer.save()
+
 
 class UserAutocomplete(APIView):
     """
