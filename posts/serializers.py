@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from posts.models import Post
+from posts.models import Post, Report
 from django.contrib.auth.models import User
 
 class PostSerializer(serializers.ModelSerializer):
@@ -35,4 +35,15 @@ class PostSerializer(serializers.ModelSerializer):
             'created_at', 'updated_at', 'title', 'description',
             'image', 'category', 'tagged_users', 'location',
         ]
+
+
+class ReportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Report
+        fields = ['post', 'user', 'reason', 'category']
+        read_only_fields = ['user']
+
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        return super().create(validated_data)  
 
