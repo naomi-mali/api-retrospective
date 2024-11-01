@@ -1,5 +1,5 @@
-# views.py
-from rest_framework import viewsets, generics, permissions, status
+from django.db.models import Count
+from rest_framework import viewsets, generics, permissions, status, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
@@ -26,7 +26,18 @@ class PostList(generics.ListCreateAPIView):
     """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
+    ).order_by('-created_at')
+    filter_backends = [
+        filters.OrderingFilter
+    ]
+    ordering_fields = [
+        'likes_count',
+        'comments_count',
+        'likes__created_at',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -38,7 +49,10 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
+    ).order_by('-created_at')
 
     def perform_update(self, serializer):
         tagged_users = self.request.data.get('tagged_users')
@@ -56,23 +70,21 @@ class ReportPostView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        # Automatically assign the current user to the report
         serializer.save(user=self.request.user)
 
     def post(self, request, *args, **kwargs):
         """
         Handle post requests to report a post.
         """
-        post_id = request.data.get('post')  # Retrieve post ID from the request data
+        post_id = request.data.get('post')
         if not post_id:
             return Response({'detail': 'Post ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Check if the post exists
         post = Post.objects.filter(id=post_id).first()
         if not post:
             return Response({'detail': 'Post not found.'}, status=status.HTTP_404_NOT_FOUND)
 
-        # Check if a report already exists for the post by the current user
+    
         if Report.objects.filter(post=post, user=request.user).exists():
             return Response({'detail': 'You have already reported this post.'}, status=status.HTTP_400_BAD_REQUEST)
 
