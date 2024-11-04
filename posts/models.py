@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     """
-    A class for the retrospective model
+    A model representing posts on the Retrospective platform.
     """
     categories = [
         ('family-and-friends', 'Family and Friends'),
@@ -34,18 +34,15 @@ class Post(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField(blank=True)
     location = models.CharField(max_length=512, null=True, blank=True)
-    
     image = models.ImageField(
         upload_to='images/',
         default='../default_post_x1mf4x',
         blank=True
     )
-    
     tagged_users = models.ManyToManyField(
         User, related_name='tagged_posts',
         blank=True
     )
-    
     category = models.CharField(
         max_length=150,
         blank=True,
@@ -62,6 +59,9 @@ class Post(models.Model):
 
 
 class Report(models.Model):
+    """
+    A model for reporting inappropriate or objectionable posts.
+    """
     CATEGORY_CHOICES = [
         ('spam', 'Spam'),
         ('inappropriate_content', 'Inappropriate Content'),
@@ -73,6 +73,7 @@ class Report(models.Model):
         ('self_harm', 'Self-harm or Suicide'),
         ('other', 'Other'),
     ]
+
     post = models.ForeignKey(
         Post,
         related_name='reports',
@@ -82,7 +83,13 @@ class Report(models.Model):
     )
     user = models.ForeignKey(User, related_name='reports', on_delete=models.CASCADE)
     reason = models.TextField()
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, blank=True, null=True, default=None,)
+    category = models.CharField(
+        max_length=50,
+        choices=CATEGORY_CHOICES,
+        blank=True,
+        null=True,
+        default=None,
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

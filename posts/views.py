@@ -21,6 +21,7 @@ class UserAutocomplete(APIView):
         usernames = [user.username for user in users]
         return Response(usernames)
 
+
 class PostList(generics.ListCreateAPIView):
     """
     List posts or create a post if logged in.
@@ -54,8 +55,8 @@ class PostList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-class PostDetail(generics.RetrieveUpdateDestroyAPIView):
 
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve a post and edit, delete, or report it if you own it.
     """
@@ -96,7 +97,6 @@ class ReportPostView(generics.CreateAPIView):
         if not post:
             return Response({'detail': 'Post not found.'}, status=status.HTTP_404_NOT_FOUND)
 
-    
         if Report.objects.filter(post=post, user=request.user).exists():
             return Response({'detail': 'You have already reported this post.'}, status=status.HTTP_400_BAD_REQUEST)
 

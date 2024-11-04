@@ -10,7 +10,7 @@ from .settings import (
 def root_route(request):
     return Response({
         "message": "Welcome to my API!"
-    })    
+    })
 
 # dj-rest-auth logout view fix
 @api_view(['POST'])
