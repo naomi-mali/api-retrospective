@@ -61,7 +61,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     '8000-naomimali-apiretrospect-oizhpjirc0y.ws.codeinstitute-ide.net',
     'api-retrospective-3d1e13d99a31.herokuapp.com',

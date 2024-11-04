@@ -1,7 +1,56 @@
 # Retrospective
 
+
 ## Project Overview
 Retrospective is a unique social media platform designed to showcase Polaroid-style photos and albums, allowing users to share significant moments from their lives from their own perspectives. This platform aims to create a community centered around gratitude, positivity, and the appreciation of life's highlights. Unlike typical social media where every detail is shared, Retrospective focuses on meaningful memories that users want to cherish and remember.
+
+
+
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Key Features](#key-features)
+   - [Polaroid Photo Sharing](#polaroid-photo-sharing)
+   - [Interactive Community](#interactive-community)
+   - [Albums for Special Moments](#albums-for-special-moments)
+   - [Follow Friends and Family](#follow-friends-and-family)
+   - [Search and Discovery](#search-and-discovery)
+   - [User Profiles](#user-profiles)
+   - [Community Guidelines](#community-guidelines)
+3. [Purpose and Strategy](#purpose-and-strategy)
+4. [Retrospective Development Plan](#retrospective-development-plan)
+   - [First Sprint](#first-sprint)
+   - [Second Sprint](#second-sprint)
+   - [Third Sprint](#third-sprint)
+   - [Fourth Sprint](#fourth-sprint)
+5. [API Endpoints with Tied User Stories](#api-endpoints-with-tied-user-stories)
+   - [User Management](#user-management)
+   - [Retrospective Posts](#retrospective-posts)
+   - [Comments](#comments)
+   - [Engagement and Interactivity](#engagement-and-interactivity)
+   - [Profiles and Discovery](#profiles-and-discovery)
+   - [Search and Discovery](#search-and-discovery-1)
+   - [Activity Feed and Notifications](#activity-feed-and-notifications)
+   - [Messaging](#messaging)
+6. [Reporting](#reporting)
+   - [Report Inappropriate Content](#report-inappropriate-content)
+7. [Miscellaneous](#miscellaneous)
+   - [Image Upload and Google Cloud Storage Integration](#image-upload-and-google-cloud-storage-integration)
+   - [Contact Form](#contact-form)
+8. [Security Implementation](#security-implementation)
+   - [Permissions Class: IsOwnerOrReadOnly](#permissions-class-isownerorreadonly)
+   - [Cloudinary Permissions for Service Account](#cloudinary-permissions-for-service-account)
+9. [Technologies](#technologies)
+10. [Libraries & Tools](#libraries--tools)
+11. [Forking a GitHub Repository](#forking-a-github-repository)
+    - [After Forking](#after-forking)
+12. [Cloudinary](#cloudinary)
+    - [Step 1: Sign Up for Cloudinary](#step-1-sign-up-for-cloudinary)
+    - [Step 2: Install Required Packages](#step-2-install-required-packages)
+    - [Step 3: Configure Django Settings](#step-3-configure-django-settings)
+    - [Step 4: Create a Model for Image Uploads](#step-4-create-a-model-for-image-uploads)
+13. [Heroku Deployment](#heroku-deployment)
+
 
 ## Key Features
 
@@ -33,10 +82,6 @@ Retrospective is a unique social media platform designed to showcase Polaroid-st
 - **Positive Environment**: Retrospective is built on the principles of respect and support. Users are encouraged to share meaningful moments and uplift one another, creating a positive online atmosphere.
 - **Reporting and Moderation**: A system is in place for reporting inappropriate content, ensuring that the community guidelines are upheld and that the platform remains a safe space for all users.
 
-## Purpose
-Retrospective aims to provide a dedicated space for users to celebrate life’s special moments, encouraging reflection and connection through the art of photography. This platform is not about sharing every mundane detail but focuses on highlighting the experiences that shape our lives, allowing users to create a lasting legacy of their most treasured memories.
-
-# Retrospective
 
 ## Purpose and Strategy
 Retrospective aims to provide a dedicated space for users to celebrate life’s special moments, encouraging reflection and connection through the art of photography. This platform focuses on highlighting the experiences that shape our lives rather than sharing every mundane detail, allowing users to create a lasting legacy of their most treasured memories.
@@ -339,6 +384,11 @@ Permissions were configured for Cloudinary service account interactions, ensurin
 - **GitHub**  
   - Code repository for securely storing the code base, documentation, and versioned project history.
 
+ ### Languages and Frameworks
+ - Python
+ - Django Rest Framework
+  pip install djangorestframework
+
   ### Libraries & Tools
 
 - [Cloudinary](https://cloudinary.com/) - Image storage
@@ -393,7 +443,6 @@ Permissions were configured for Cloudinary service account interactions, ensurin
 - **Create a Pull Request** (Optional):
   - If you want to propose your changes back to the original repository, you can create a pull request. Go to the original repository, and you will often see an option to create a pull request for the changes in your fork.
 
-Here's a comprehensive step-by-step guide on how to install and use Cloudinary to store photos in your Django project:
 -------
 
 ## Cloudinary
@@ -498,7 +547,7 @@ Here's a refined guide for deploying your application to Heroku, specifically ta
 
 ---
 
-### Heroku Deployment 
+## Heroku Deployment 
 
 1. **Create a Heroku Account**:
    - Navigate to the [Heroku website](https://www.heroku.com/) and sign up for a free account if you don’t already have one.
