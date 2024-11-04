@@ -64,6 +64,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = [
     '8000-naomimali-apiretrospect-oizhpjirc0y.ws.codeinstitute-ide.net',
+    'api-retrospective-3d1e13d99a31.herokuapp.com',
     os.environ.get('ALLOWED_HOST'),
     'localhost',
 ]
