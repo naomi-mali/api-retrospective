@@ -4,7 +4,10 @@
 ## Project Overview
 Retrospective is a unique social media platform designed to showcase Polaroid-style photos and albums, allowing users to share significant moments from their lives from their own perspectives. This platform aims to create a community centered around gratitude, positivity, and the appreciation of life's highlights. Unlike typical social media where every detail is shared, Retrospective focuses on meaningful memories that users want to cherish and remember.
 
-
+[Deployed Frontend Site]()
+[Deployed API](https://api-retrospective-3d1e13d99a31.herokuapp.com/)
+[Frontend Repo]()
+[Backend Repo]()
 
 ## Table of Contents
 
@@ -35,21 +38,26 @@ Retrospective is a unique social media platform designed to showcase Polaroid-st
 6. [Reporting](#reporting)
    - [Report Inappropriate Content](#report-inappropriate-content)
 7. [Miscellaneous](#miscellaneous)
+8. [Database Schema](#databaseschema)
    - [Image Upload and Google Cloud Storage Integration](#image-upload-and-google-cloud-storage-integration)
    - [Contact Form](#contact-form)
-8. [Security Implementation](#security-implementation)
+9. [Security Implementation](#security-implementation)
    - [Permissions Class: IsOwnerOrReadOnly](#permissions-class-isownerorreadonly)
    - [Cloudinary Permissions for Service Account](#cloudinary-permissions-for-service-account)
-9. [Technologies](#technologies)
-10. [Libraries & Tools](#libraries--tools)
-11. [Forking a GitHub Repository](#forking-a-github-repository)
+10. [Technologies](#technologies)
+11. [Libraries & Tools](#libraries--tools)
+12. [Forking a GitHub Repository](#forking-a-github-repository)
     - [After Forking](#after-forking)
-12. [Cloudinary](#cloudinary)
+13. [Cloudinary](#cloudinary)
     - [Step 1: Sign Up for Cloudinary](#step-1-sign-up-for-cloudinary)
     - [Step 2: Install Required Packages](#step-2-install-required-packages)
     - [Step 3: Configure Django Settings](#step-3-configure-django-settings)
     - [Step 4: Create a Model for Image Uploads](#step-4-create-a-model-for-image-uploads)
-13. [Heroku Deployment](#heroku-deployment)
+14. [Heroku Deployment](#heroku-deployment)
+15. [Python Packages](#pythonpackages)
+    -[ Installed as package dependcies with above installations](#installedaspackagedependcieswithaboveinstallations)
+16. [Testing](#testing)    
+
 
 
 ## Key Features
@@ -338,6 +346,11 @@ This plan outlines the sprints needed for the development of Retrospective, with
     - **Endpoint:**
       - **POST /api/contact** - Submit a contact form request.
 
+---
+## Database Schema
+
+![DBMS ER diagram (UML notation)](https://github.com/user-attachments/assets/70489d3e-ff33-4e40-bd04-b2614cb89a49)
+
 ### Security Implementation
 
 ---
@@ -603,3 +616,192 @@ Here's a refined guide for deploying your application to Heroku, specifically ta
      ```
 
 ---
+## Python Packages
+---
+<details open>
+<summary> Details of packages </summary>
+
+- **django.contrib.admin**  
+  Provides Django’s built-in admin interface, allowing admins to manage site data and content through an easy-to-use UI.
+
+- **django.contrib.auth**  
+  Handles authentication features, such as user login, registration, permissions, and password management, essential for securing the application.
+
+- **django.contrib.contenttypes**  
+  Supports generic relationships and polymorphic models by enabling a framework to associate models with other models dynamically.
+
+- **django.contrib.sessions**  
+  Manages user sessions, allowing data to be stored per user across requests, which is useful for user login sessions.
+
+- **django.contrib.messages**  
+  Provides messaging functionality, allowing messages to be sent and displayed between views, often used for feedback or notifications to users.
+
+- **django.contrib.staticfiles**  
+  Manages static files like CSS, JavaScript, and images, enabling efficient handling and serving of static resources in Django applications.
+
+- **cloudinary_storage**  
+  Configures Django to use Cloudinary for storing and serving media files, allowing images and videos to be hosted and optimized in the cloud.
+
+- **cloudinary**  
+  Integrates Cloudinary’s API into Django, enabling features for media upload, transformation, and delivery through the Cloudinary platform.
+
+- **rest_framework**  
+  Django REST Framework (DRF) is a toolkit for building Web APIs, providing serializers, views, and authentication systems for creating RESTful APIs.
+
+- **django_filters**  
+  Adds filtering support to DRF, allowing for more precise and user-defined data querying via API endpoints.
+
+- **rest_framework.authtoken**  
+  Provides token-based authentication for DRF, allowing users to authenticate via tokens in addition to traditional session-based methods.
+
+- **dj_rest_auth**  
+  Adds API endpoints for authentication and registration in DRF, supporting operations like login, logout, password management, and more.
+
+- **django.contrib.sites**  
+  Enables multi-site support in Django, allowing one Django project to serve multiple websites with different settings and configurations.
+
+- **allauth**  
+  A comprehensive authentication library for Django, providing account registration, login, and third-party provider support, which integrates seamlessly with Django’s auth system.
+
+- **allauth.account**  
+  Handles core account management functionalities in `allauth`, such as email management, password reset, and login.
+
+- **allauth.socialaccount**  
+  Adds social account login capabilities, allowing users to authenticate with third-party providers like Google or Facebook.
+
+- **dj_rest_auth.registration**  
+  Provides registration-related endpoints for DRF, supporting account creation, verification, and optional email confirmation for new users.
+
+- **corsheaders**  
+  Adds Cross-Origin Resource Sharing (CORS) headers, enabling secure access to the API from different domains and preventing potential CORS-related security issues.- **django.contrib.admin**  
+  Provides Django’s built-in admin interface, allowing admins to manage site data and content through an easy-to-use UI.
+
+- **django.contrib.auth**  
+  Handles authentication features, such as user login, registration, permissions, and password management, essential for securing the application.
+
+- **django.contrib.contenttypes**  
+  Supports generic relationships and polymorphic models by enabling a framework to associate models with other models dynamically.
+
+- **django.contrib.sessions**  
+  Manages user sessions, allowing data to be stored per user across requests, which is useful for user login sessions.
+
+- **django.contrib.messages**  
+  Provides messaging functionality, allowing messages to be sent and displayed between views, often used for feedback or notifications to users.
+
+- **django.contrib.staticfiles**  
+  Manages static files like CSS, JavaScript, and images, enabling efficient handling and serving of static resources in Django applications.
+
+- **cloudinary_storage**  
+  Configures Django to use Cloudinary for storing and serving media files, allowing images and videos to be hosted and optimized in the cloud.
+
+- **cloudinary**  
+  Integrates Cloudinary’s API into Django, enabling features for media upload, transformation, and delivery through the Cloudinary platform.
+
+- **rest_framework**  
+  Django REST Framework (DRF) is a toolkit for building Web APIs, providing serializers, views, and authentication systems for creating RESTful APIs.
+
+- **django_filters**  
+  Adds filtering support to DRF, allowing for more precise and user-defined data querying via API endpoints.
+
+- **rest_framework.authtoken**  
+  Provides token-based authentication for DRF, allowing users to authenticate via tokens in addition to traditional session-based methods.
+
+- **dj_rest_auth**  
+  Adds API endpoints for authentication and registration in DRF, supporting operations like login, logout, password management, and more.
+
+- **django.contrib.sites**  
+  Enables multi-site support in Django, allowing one Django project to serve multiple websites with different settings and configurations.
+
+- **allauth**  
+  A comprehensive authentication library for Django, providing account registration, login, and third-party provider support, which integrates seamlessly with Django’s auth system.
+
+- **allauth.account**  
+  Handles core account management functionalities in `allauth`, such as email management, password reset, and login.
+
+- **allauth.socialaccount**  
+  Adds social account login capabilities, allowing users to authenticate with third-party providers like Google or Facebook.
+
+- **dj_rest_auth.registration**  
+  Provides registration-related endpoints for DRF, supporting account creation, verification, and optional email confirmation for new users.
+
+- **corsheaders**  
+  Adds Cross-Origin Resource Sharing (CORS) headers, enabling secure access to the API from different domains and preventing potential CORS-related security issues.
+
+---
+  ## Installed as package dependcies with above installations:
+---
+
+  - **asgiref==3.8.1**  
+  Provides ASGI (Asynchronous Server Gateway Interface) support for Django, allowing Django applications to handle asynchronous requests, improving performance for real-time applications.
+
+- **cloudinary==1.41.0**  
+  Integrates with Cloudinary’s API for image and video upload, storage, transformation, and optimization, enabling efficient media handling in Django applications.
+
+- **dj-database-url==0.5.0**  
+  Simplifies the configuration of database URLs for Django applications by parsing `DATABASE_URL` environment variables, making database setup more flexible.
+
+- **dj-rest-auth==2.1.9**  
+  Adds endpoints for user authentication and registration to Django REST Framework, supporting features like login, logout, password reset, and social authentication.
+
+- **Django==4.2**  
+  A high-level Python web framework that simplifies development by providing reusable components for building robust web applications quickly and securely.
+
+- **django-allauth==0.54.0**  
+  Provides an extensible, all-in-one solution for user registration, login, and social authentication in Django, with support for multiple providers.
+
+- **django-cloudinary-storage==0.3.0**  
+  Configures Django to use Cloudinary as the media file storage backend, allowing direct media management and retrieval from Cloudinary.
+
+- **django-cors-headers==3.7.0**  
+  Adds Cross-Origin Resource Sharing (CORS) headers to Django responses, enabling your API to be accessible from different domains securely.
+
+- **django-filter==2.4.0**  
+  Offers filtering support for Django REST Framework, allowing users to query and filter data through API endpoints.
+
+- **djangorestframework==3.15.2**  
+  A powerful toolkit for building APIs in Django, offering tools for serialization, request handling, and response formatting.
+
+- **djangorestframework-simplejwt==4.7.2**  
+  Implements JSON Web Token (JWT) authentication for Django REST Framework, allowing token-based secure user authentication.
+
+- **gunicorn==23.0.0**  
+  A Python WSGI HTTP Server for UNIX, often used to serve Django applications in production with performance optimizations.
+
+- **oauthlib==3.2.2**  
+  A library that provides generic and secure OAuth support, used by other libraries like `requests-oauthlib` for handling OAuth-based authentication flows.
+
+- **pillow==11.0.0**  
+  The Python Imaging Library (PIL) fork, used for image processing in Django, supporting formats like JPEG, PNG, and GIF.
+
+- **psycopg2==2.9.10**  
+  A PostgreSQL adapter for Python, enabling Django to interact with PostgreSQL databases efficiently.
+
+- **PyJWT==2.9.0**  
+  A library for creating and verifying JSON Web Tokens, which is integral for implementing token-based authentication.
+
+- **python3-openid==3.2.0**  
+  Adds OpenID authentication support for Django, facilitating secure single sign-on (SSO) capabilities for various providers.
+
+- **pytz==2024.2**  
+  Provides timezone support for Python, required by Django for handling time zone–aware date and time objects.
+
+- **requests-oauthlib==2.0.0**  
+  Combines OAuth 1 and OAuth 2 support for Python's `requests` library, making it easier to handle OAuth flows in Django applications.
+
+- **sqlparse==0.5.1**  
+  A tool for parsing, formatting, and reformatting SQL statements, which Django uses internally for managing database queries.
+</details>
+<hr>
+
+---
+## Testing
+
+I my project, each installed app includes a `tests.py` file, allowing for organized and specific unit tests for each app’s functionality. This structure ensures:
+
+- **Isolation of Tests**: Each app's tests target only its specific features, making debugging and development more manageable.
+- **Modular Testing**: You can run tests for individual apps independently, aiding in continuous integration and targeted test runs.
+- **Comprehensive Coverage**: Testing each app’s unique components promotes full code coverage, improving project reliability and reducing bugs.
+
+![bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb](https://github.com/user-attachments/assets/20df1380-a3bd-49df-b601-0e12e8a1b872)
+
+The API's were tested locally during development but the core testing was done as part of the front end repos and testing to the real API's manually via form inputs and page loads.
