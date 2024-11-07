@@ -12,6 +12,7 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    mentioned_users = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True)
     tagged_users = serializers.SlugRelatedField(
         queryset=User.objects.all(), slug_field='username', many=True, required=False, allow_null=True
     )
@@ -47,7 +48,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
             'created_at', 'updated_at', 'title', 'description',
-            'image', 'category', 'like_id', 'tagged_users', 'location',
+            'image', 'category', 'like_id', 'tagged_users', 'mentioned_users', 'location',
             'likes_count', 'comments_count',
         ]
 

@@ -34,6 +34,7 @@ class Post(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField(blank=True)
     location = models.CharField(max_length=512, null=True, blank=True)
+    mentioned_users = models.ManyToManyField(User, related_name='mentioned_in', blank=True)
     image = models.ImageField(
         upload_to='images/',
         default='../default_post_x1mf4x',

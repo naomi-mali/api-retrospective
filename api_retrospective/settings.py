@@ -75,7 +75,9 @@ if "CLIENT_ORIGIN" in os.environ:
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://.*\.codeinstitute-ide\.net$"
 ]
+
 CORS_ALLOW_CREDENTIALS = True
+
 
 # Application definition
 

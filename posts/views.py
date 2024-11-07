@@ -9,19 +9,6 @@ from .serializers import PostSerializer, ReportSerializer
 from api_retrospective.permissions import IsOwnerOrReadOnly
 
 
-class UserAutocomplete(APIView):
-    """
-    Returns a list of usernames that match the query parameter for autocomplete functionality.
-    """
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-    def get(self, request):
-        query = request.query_params.get('q', '')
-        users = User.objects.filter(username__icontains=query)[:10]
-        usernames = [user.username for user in users]
-        return Response(usernames)
-
-
 class PostList(generics.ListCreateAPIView):
     """
     List posts or create a post if logged in.
@@ -73,6 +60,19 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
             serializer.save(tagged_users=[])
         else:
             serializer.save()
+
+class MentionsList(APIView):
+    """
+    Provides a list of user mentions based on a search query.
+    """
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]  
+
+    def get(self, request):
+        search_query = request.query_params.get('search', '')  
+        users = User.objects.filter(username__icontains=search_query)  
+        mentions = [{"id": str(user.id), "name": user.username} for user in users]
+        
+        return Response(mentions)        
 
 
 class ReportPostView(generics.CreateAPIView):
