@@ -13,9 +13,8 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
     mentioned_users = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True)
-    tagged_users = serializers.SlugRelatedField(
-        queryset=User.objects.all(), slug_field='username', many=True, required=False, allow_null=True
-    )
+    tagged_users = serializers.PrimaryKeyRelatedField(queryset=User .objects.all(), many=True, required=False)
+    
     
     def validate_image(self, value):
         """
@@ -43,6 +42,14 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None    
 
+    def create(self, validated_data):
+        mentioned_users = validated_data.pop('mentioned_users', [])
+        tagged_users = validated_data.pop('tagged_users', [])
+        post = Post.objects.create(**validated_data)
+        post.mentioned_users.set(mentioned_users)  # Set the many-to-many relationship
+        post.tagged_users.set(tagged_users)  # Set the many-to-many relationship
+        return post  
+        
     class Meta:
         model = Post
         fields = [

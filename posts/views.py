@@ -25,9 +25,7 @@ class PostList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'owner__followed__owner__profile',
-        'likes__owner__profile',
-        'owner__profile',
+        'owner__username',
     ]
     search_fields = [
         'owner__username',
@@ -41,6 +39,8 @@ class PostList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -68,11 +68,13 @@ class MentionsList(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]  
 
     def get(self, request):
-        search_query = request.query_params.get('search', '')  
-        users = User.objects.filter(username__icontains=search_query)  
+        search_query = request.query_params.get('search', '').strip()  
+        if search_query:
+            users = User.objects.filter(username__icontains=search_query)[:10] 
+        else:
+            users = User.objects.all()[:10] 
         mentions = [{"id": str(user.id), "name": user.username} for user in users]
-        
-        return Response(mentions)        
+        return Response(mentions)       
 
 
 class ReportPostView(generics.CreateAPIView):
@@ -110,4 +112,4 @@ class ReportPostView(generics.CreateAPIView):
             self.perform_create(serializer)
             return Response({'detail': 'Post reported successfully.'}, status=status.HTTP_201_CREATED)
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
