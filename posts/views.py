@@ -9,6 +9,7 @@ from .serializers import PostSerializer, ReportSerializer
 from api_retrospective.permissions import IsOwnerOrReadOnly
 
 
+
 class PostList(generics.ListCreateAPIView):
     """
     List posts or create a post if logged in.
@@ -82,7 +83,7 @@ class ReportPostView(generics.CreateAPIView):
     View for reporting a post.
     """
     serializer_class = ReportSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -119,7 +120,7 @@ class ReportListView(generics.ListAPIView):
     View to list all reports.
     """
     serializer_class = ReportSerializer
-    permission_classes = [permissions.IsAdminUser]  
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
 
     def get_queryset(self):
         """

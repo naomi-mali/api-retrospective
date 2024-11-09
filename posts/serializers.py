@@ -46,8 +46,8 @@ class PostSerializer(serializers.ModelSerializer):
         mentioned_users = validated_data.pop('mentioned_users', [])
         tagged_users = validated_data.pop('tagged_users', [])
         post = Post.objects.create(**validated_data)
-        post.mentioned_users.set(mentioned_users)  # Set the many-to-many relationship
-        post.tagged_users.set(tagged_users)  # Set the many-to-many relationship
+        post.mentioned_users.set(mentioned_users)  
+        post.tagged_users.set(tagged_users) 
         return post  
         
     class Meta:
