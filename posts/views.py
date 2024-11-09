@@ -112,4 +112,30 @@ class ReportPostView(generics.CreateAPIView):
             self.perform_create(serializer)
             return Response({'detail': 'Post reported successfully.'}, status=status.HTTP_201_CREATED)
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ReportListView(generics.ListAPIView):
+    """
+    View to list all reports.
+    """
+    serializer_class = ReportSerializer
+    permission_classes = [permissions.IsAdminUser]  
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned reports to a given user,
+        by filtering against a `user` query parameter in the URL.
+        """
+        queryset = Report.objects.all() 
+        user = self.request.query_params.get('user', None)
+        if user is not None:
+            queryset = queryset.filter(user=user)  
+        return queryset
+
+    def list(self, request, *args, **kwargs):
+        """
+        Handle GET requests to fetch the list of reports.
+        """
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

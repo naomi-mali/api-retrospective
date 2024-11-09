@@ -70,3 +70,7 @@ class ReportSerializer(serializers.ModelSerializer):
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)  
 
+    class Meta:
+        model = Report
+        fields = ['id', 'post', 'reason', 'category', 'created_at']
+

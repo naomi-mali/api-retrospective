@@ -63,10 +63,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
-    '8000-naomimali-apiretrospect-oizhpjirc0y.ws.codeinstitute-ide.net',
-    'api-retrospective-3d1e13d99a31.herokuapp.com',
-    os.environ.get('ALLOWED_HOST'),
     'localhost',
+    '127.0.0.1',
+    os.environ.get('ALLOWED_HOST'),
+    'api-retrospective-3d1e13d99a31.herokuapp.com',
+    '8000-naomimali-apiretrospect-hrhy1mlhpwa.ws.codeinstitute-ide.net',
 ]
 
 if "CLIENT_ORIGIN" in os.environ:
@@ -206,5 +207,5 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-naomimali-apiretrospect-oizhpjirc0y.ws.codeinstitute-ide.net'
+    'https://8000-naomimali-apiretrospect-hrhy1mlhpwa.ws.codeinstitute-ide.net'
 ]
