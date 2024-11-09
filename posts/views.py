@@ -83,7 +83,7 @@ class ReportPostView(generics.CreateAPIView):
     View for reporting a post.
     """
     serializer_class = ReportSerializer
-    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -120,7 +120,7 @@ class ReportListView(generics.ListAPIView):
     View to list all reports.
     """
     serializer_class = ReportSerializer
-    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         """
