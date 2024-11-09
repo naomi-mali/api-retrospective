@@ -78,19 +78,35 @@ class MentionsList(APIView):
         return Response(mentions)       
 
 
-class ReportPostView(generics.CreateAPIView):
+class ReportPostView(generics.RetrieveUpdateAPIView):
     """
-    View for reporting a post.
+    View for reporting a post. Allows creating or updating a report.
     """
     serializer_class = ReportSerializer
     permission_classes = [permissions.IsAuthenticated]
+    queryset = Report.objects.all()
 
     def perform_create(self, serializer):
+        # Create a new report
         serializer.save(user=self.request.user)
+
+    def perform_update(self, serializer):
+        # Update an existing report
+        serializer.save()
+
+    def get_object(self):
+        """
+        Retrieve the existing report if it exists, otherwise return None.
+        """
+        post_id = self.kwargs.get('post_id')
+        report = Report.objects.filter(post_id=post_id, user=self.request.user).first()
+        if report:
+            return report
+        return None
 
     def post(self, request, *args, **kwargs):
         """
-        Handle post requests to report a post.
+        Handle POST request to report a post (create a new report).
         """
         post_id = request.data.get('post')
         if not post_id:
@@ -114,6 +130,31 @@ class ReportPostView(generics.CreateAPIView):
             return Response({'detail': 'Post reported successfully.'}, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request, *args, **kwargs):
+        """
+        Handle PUT requests to update a report.
+        """
+        post_id = request.data.get('post')
+        if not post_id:
+            return Response({'detail': 'Post ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        post = Post.objects.filter(id=post_id).first()
+        if not post:
+            return Response({'detail': 'Post not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        # Check if the report exists
+        report = Report.objects.filter(post=post, user=request.user).first()
+        if not report:
+            return Response({'detail': 'You have not reported this post yet.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Update the report
+        report.reason = request.data.get('reason', report.reason)
+        report.category = request.data.get('category', report.category)
+        report.save()
+
+        return Response({'detail': 'Report updated successfully.'}, status=status.HTTP_200_OK)
+
 
 class ReportListView(generics.ListAPIView):
     """
