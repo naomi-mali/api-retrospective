@@ -63,14 +63,8 @@ class PostSerializer(serializers.ModelSerializer):
 class ReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = Report
-        fields = ['post', 'user', 'reason', 'category']
-        read_only_fields = ['user']
-
-    def create(self, validated_data):
-        validated_data['user'] = self.context['request'].user
-        return super().create(validated_data)  
-
-    class Meta:
-        model = Report
-        fields = ['id', 'post', 'reason', 'category', 'created_at']
-
+        fields = ['post', 'user', 'category', 'comment', 'created_at']
+        extra_kwargs = {
+            'user': {'read_only': True},
+            'created_at': {'read_only': True}
+        }

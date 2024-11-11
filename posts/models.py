@@ -60,9 +60,6 @@ class Post(models.Model):
 
 
 class Report(models.Model):
-    """
-    A model for reporting inappropriate or objectionable posts.
-    """
     CATEGORY_CHOICES = [
         ('spam', 'Spam'),
         ('inappropriate_content', 'Inappropriate Content'),
@@ -75,28 +72,14 @@ class Report(models.Model):
         ('other', 'Other'),
     ]
 
-    post = models.ForeignKey(
-        Post,
-        related_name='reports',
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True
-    )
-    user = models.ForeignKey(User, related_name='reports', on_delete=models.CASCADE)
-    reason = models.TextField()
-    category = models.CharField(
-        max_length=50,
-        choices=CATEGORY_CHOICES,
-        blank=True,
-        null=True,
-        default=None,
-    )
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='reports')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reports')
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='none')
+    comment = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['post', 'user'], name='unique_report_per_user_post')
-        ]
+        unique_together = ('post', 'user')
 
     def __str__(self):
-        return f'Report by {self.user} on {self.post}'
+        return f"Report by {self.user} on {self.post}"
