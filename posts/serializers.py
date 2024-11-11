@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from posts.models import Post, Report
+from posts.models import Post
 from django.contrib.auth.models import User
 from likes.models import Like
 
@@ -58,13 +58,3 @@ class PostSerializer(serializers.ModelSerializer):
             'image', 'category', 'like_id', 'tagged_users', 'mentioned_users', 'location',
             'likes_count', 'comments_count',
         ]
-
-
-class ReportSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Report
-        fields = ['post', 'user', 'category', 'comment', 'created_at']
-        extra_kwargs = {
-            'user': {'read_only': True},
-            'created_at': {'read_only': True}
-        }

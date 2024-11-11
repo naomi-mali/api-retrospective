@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Post(models.Model):
     """
     A model representing posts on the Retrospective platform.
@@ -34,14 +35,9 @@ class Post(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField(blank=True)
     location = models.CharField(max_length=512, null=True, blank=True)
-    mentioned_users = models.ManyToManyField(User, related_name='mentioned_in', blank=True)
     image = models.ImageField(
         upload_to='images/',
         default='../default_post_x1mf4x',
-        blank=True
-    )
-    tagged_users = models.ManyToManyField(
-        User, related_name='tagged_posts',
         blank=True
     )
     category = models.CharField(
@@ -51,7 +47,13 @@ class Post(models.Model):
         default=None,
         choices=categories
     )
-
+    tagged_user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE, related_name='tagged_user',
+        blank=True,
+        null=True,
+        default=None
+    )
     class Meta:
         ordering = ['-created_at']
 
@@ -59,27 +61,3 @@ class Post(models.Model):
         return f'{self.id} {self.title}'
 
 
-class Report(models.Model):
-    CATEGORY_CHOICES = [
-        ('spam', 'Spam'),
-        ('inappropriate_content', 'Inappropriate Content'),
-        ('harassment', 'Harassment or Bullying'),
-        ('hate_speech', 'Hate Speech'),
-        ('misinformation', 'Misinformation'),
-        ('copyright_violation', 'Copyright Violation'),
-        ('impersonation', 'Impersonation'),
-        ('self_harm', 'Self-harm or Suicide'),
-        ('other', 'Other'),
-    ]
-
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='reports')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reports')
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='none')
-    comment = models.TextField(blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        unique_together = ('post', 'user')
-
-    def __str__(self):
-        return f"Report by {self.user} on {self.post}"

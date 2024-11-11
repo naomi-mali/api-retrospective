@@ -4,8 +4,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
-from .models import Post, Report
-from .serializers import PostSerializer, ReportSerializer
+from .models import Post
+from .serializers import PostSerializer
 from api_retrospective.permissions import IsOwnerOrReadOnly
 
 
@@ -65,36 +65,3 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
             serializer.save(tagged_users=[])
         else:
             serializer.save()
-
-class MentionsList(APIView):
-    """
-    Provides a list of user mentions based on a search query.
-    """
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]  
-
-    def get(self, request):
-        search_query = request.query_params.get('search', '').strip()  
-        if search_query:
-            users = User.objects.filter(username__icontains=search_query)[:10] 
-        else:
-            users = User.objects.all()[:10] 
-        mentions = [{"id": str(user.id), "name": user.username} for user in users]
-        return Response(mentions)       
-
-class ReportCreateView(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-    def get(self, request):
-        reports = Report.objects.all()
-        serializer = ReportSerializer(reports, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        data = request.data
-        serializer = ReportSerializer(data=data)
-
-        if serializer.is_valid():
-            serializer.save(owner=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
