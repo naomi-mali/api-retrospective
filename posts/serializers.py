@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from posts.models import Post
-from django.contrib.auth.models import User
 from likes.models import Like
 
 
@@ -12,8 +11,6 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-    mentioned_users = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True)
-    tagged_users = serializers.PrimaryKeyRelatedField(queryset=User .objects.all(), many=True, required=False)
     
     
     def validate_image(self, value):
@@ -41,20 +38,13 @@ class PostSerializer(serializers.ModelSerializer):
             ).first()
             return like.id if like else None
         return None    
-
-    def create(self, validated_data):
-        mentioned_users = validated_data.pop('mentioned_users', [])
-        tagged_users = validated_data.pop('tagged_users', [])
-        post = Post.objects.create(**validated_data)
-        post.mentioned_users.set(mentioned_users)  
-        post.tagged_users.set(tagged_users) 
-        return post  
+ 
         
     class Meta:
         model = Post
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
             'created_at', 'updated_at', 'title', 'description',
-            'image', 'category', 'like_id', 'tagged_users', 'mentioned_users', 'location',
+            'image', 'category', 'like_id',  'location',
             'likes_count', 'comments_count',
         ]

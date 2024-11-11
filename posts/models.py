@@ -47,17 +47,9 @@ class Post(models.Model):
         default=None,
         choices=categories
     )
-    tagged_user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE, related_name='tagged_user',
-        blank=True,
-        null=True,
-        default=None
-    )
+    
     class Meta:
         ordering = ['-created_at']
 
     def __str__(self):
         return f'{self.id} {self.title}'
-
-

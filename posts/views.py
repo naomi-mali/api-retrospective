@@ -9,9 +9,6 @@ from .serializers import PostSerializer
 from api_retrospective.permissions import IsOwnerOrReadOnly
 
 
-
-
-
 class PostList(generics.ListCreateAPIView):
     """
     List posts or create a post if logged in.
@@ -30,7 +27,8 @@ class PostList(generics.ListCreateAPIView):
     filterset_fields = [
         'owner__followed__owner__profile',
         'likes__owner__profile',
-        'owner__profile',]
+        'owner__profile',
+        ]
         
     search_fields = [
         'owner__username',
@@ -50,7 +48,7 @@ class PostList(generics.ListCreateAPIView):
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve a post and edit, delete, or report it if you own it.
+    Retrieve a post and edit, delete, it if you own it.
     """
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
