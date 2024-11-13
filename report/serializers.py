@@ -9,4 +9,9 @@ class ReportSerializer(serializers.ModelSerializer):
     class Meta:
         """Meta field to specify the model and fields"""
         model = Report
-        fields = ['post', 'user', 'comment', 'category', 'created_at']
+        fields = ['reason', 'category']
+
+    def validate_category(self, value):
+        if value not in dict(Report.CATEGORY_CHOICES).keys():
+            raise serializers.ValidationError("Invalid category.")
+        return value

@@ -21,7 +21,6 @@ Retrospective is a unique social media platform designed to showcase Polaroid-st
    - [Follow Friends and Family](#follow-friends-and-family)
    - [Search and Discovery](#search-and-discovery)
    - [User Profiles](#user-profiles)
-   - [Community Guidelines](#community-guidelines)
 3. [Purpose and Strategy](#purpose-and-strategy)
 4. [Retrospective Development Plan](#retrospective-development-plan)
    - [First Sprint](#first-sprint)
@@ -36,27 +35,24 @@ Retrospective is a unique social media platform designed to showcase Polaroid-st
    - [Profiles and Discovery](#profiles-and-discovery)
    - [Search and Discovery](#search-and-discovery-1)
    - [Activity Feed and Notifications](#activity-feed-and-notifications)
-   - [Messaging](#messaging)
-6. [Reporting](#reporting)
-   - [Report Inappropriate Content](#report-inappropriate-content)
-7. [Miscellaneous](#miscellaneous)
-8. [Database Schema](#databaseschema)
+6. [Miscellaneous](#miscellaneous)
+7. [Database Schema](#databaseschema)
    - [Image Upload and Google Cloud Storage Integration](#image-upload-and-google-cloud-storage-integration)
    - [Contact Form](#contact-form)
-9. [Security Implementation](#security-implementation)
+8. [Security Implementation](#security-implementation)
    - [Permissions Class: IsOwnerOrReadOnly](#permissions-class-isownerorreadonly)
    - [Cloudinary Permissions for Service Account](#cloudinary-permissions-for-service-account)
-10. [Technologies](#technologies)
-11. [Libraries & Tools](#libraries--tools)
-12. [Forking a GitHub Repository](#forking-a-github-repository)
+9. [Technologies](#technologies)
+10. [Libraries & Tools](#libraries--tools)
+11. [Forking a GitHub Repository](#forking-a-github-repository)
     - [After Forking](#after-forking)
-13. [Cloudinary](#cloudinary)
+12. [Cloudinary](#cloudinary)
     - [Step 1: Sign Up for Cloudinary](#step-1-sign-up-for-cloudinary)
     - [Step 2: Install Required Packages](#step-2-install-required-packages)
     - [Step 3: Configure Django Settings](#step-3-configure-django-settings)
     - [Step 4: Create a Model for Image Uploads](#step-4-create-a-model-for-image-uploads)
-14. [Heroku Deployment](#heroku-deployment)
-15. [Python Packages](#pythonpackages)
+13. [Heroku Deployment](#heroku-deployment)
+14. [Python Packages](#pythonpackages)
     -[ Installed as package dependcies with above installations](#installedaspackagedependcieswithaboveinstallations)
 16. [Testing](#testing)    
 
@@ -94,11 +90,6 @@ Retrospective is a unique social media platform designed to showcase Polaroid-st
 ---
 - Personalized Profiles: Create a unique profile that showcases your favorite Polaroid photos and albums, allowing you to express your individuality and perspective on life.
 - Statistics and Highlights: View engagement metrics on your posts and see which moments resonate most with your audience.
-
-### Community Guidelines
----
-- Positive Environment: Retrospective is built on the principles of respect and support. Users are encouraged to share meaningful moments and uplift one another, creating a positive online atmosphere.
-- Reporting and Moderation: A system is in place for reporting inappropriate content, ensuring that the community guidelines are upheld and that the platform remains a safe space for all users.
 
 
 ## Purpose and Strategy
@@ -176,16 +167,10 @@ For more details on the user stories go to the [projects KANBAN board](https://g
   - View Profile Page
   - Profile List
   - Search Posts by Keyword
-  - Messaging
   - View Liked Posts
   - View Activity Feed
-  - Report Post for Inappropriate Content
-  - Report a Comment
-  - Tag Users in Comments
   - Add Post Location
   - Infinite Scroll (for Posts and Comments)
-  - Add Google Cloud Storage for Static Images
-  - Messaging - Chat
   - Filter Messages
   - Most Followed Profiles
   - Landing Page
@@ -281,22 +266,16 @@ This plan outlines the sprints needed for the development of Retrospective, with
      - GET /api/user/following - View users the user is following.
      - GET /api/user/followers - View user’s followers.
 
-10. Tag Users in Comments
-    - User Story: *As a user, I can tag users in my comments so they are notified and can engage in discussions.*
-    - Endpoint:
-      - POST /api/retrospectives/:id/comments (with tagging functionality).
-
-
 ### Profiles and Discovery
 ---
 
-11. Profile Management
+10. Profile Management
     - User Story: *As a user, I can view and edit profiles to share and update personal information.*
     - Endpoints:
       - GET /api/user/:id/profile - View specific user’s profile by ID.
       - PUT /api/user/update - Update user profile information.
 
-12. View Suggested and Popular Profiles
+11. View Suggested and Popular Profiles
     - User Story: *As a user, I can discover popular and suggested users so I can follow interesting profiles.*
     - Endpoints:
       - GET /api/user/suggested - Fetch suggested users list.
@@ -306,14 +285,14 @@ This plan outlines the sprints needed for the development of Retrospective, with
 ### Search and Discovery
 ---
 
-13. Search Retrospectives and Profiles
+12. Search Retrospectives and Profiles
     - User Story: *As a user, I can search for retrospectives and profiles to find specific content and users.*
     - Endpoints:
       - GET /api/search/retrospectives - Search retrospectives by keyword.
       - GET /api/search/profiles - Search profiles by username or keyword.
 
-14. Discover Highlights
-    - User Story: *As a user, I can explore a curated feed of highlights to find inspiration and new connections.*
+13. Discover Profiles
+    - User Story: *As a user, I can explore a curated feed of Profiles to find inspiration and new connections.*
     - Endpoint:
       - GET /api/retrospectives/discover - Discover a curated feed of retrospectives.
 
@@ -321,43 +300,21 @@ This plan outlines the sprints needed for the development of Retrospective, with
 ### Activity Feed and Notifications
 ---
 
-15. View Activity Feed
+14. View Activity Feed
     - User Story: *As a user, I can see an activity feed of users I follow to stay updated on their interactions.*
     - Endpoint:
       - GET /api/user/activity - Fetch recent activity of followed users.
 
 
-### Messaging
----
-
-16. Messaging and Conversations
-    - User Story: *As a user, I can send and receive messages in real-time with other users.*
-    - Endpoints:
-      - POST /api/messages - Send messages to users.
-      - GET /api/messages/conversations - View conversations.
-      - GET /api/messages/:conversationId - View messages within a specific conversation.
-      - GET /api/messages/unread - Fetch count of unread messages.
-
-
-### Reporting
----
-
-17. Report Inappropriate Content
-    - User Story: *As a user, I can report inappropriate posts and comments to help maintain a positive community.*
-    - Endpoints:
-      - POST /api/retrospectives/:id/report - Report a retrospective.
-      - POST /api/comments/:commentId/report - Report a comment.
-
-
 ### Miscellaneous
 ---
 
-18. Image Upload and Google Cloud Storage Integration
+15. Image Upload and Google Cloud Storage Integration
     - User Story: *As a developer, I can integrate Cloudinary Cloud Storage to handle image uploads.*
     - Endpoint:
       - POST /api/upload - Upload images to Cloudinary Storage.
 
-19. Contact Form
+16. Contact Form
     - User Story: *As a user, I can submit a contact form to get support or make inquiries.*
     - Endpoint:
       - POST /api/contact - Submit a contact form request.
@@ -768,7 +725,6 @@ In this project, each installed app includes a `tests.py` file, allowing for org
 
 The API was tested locally during development. Core testing was conducted as part of the frontend repos, where real APIs were tested manually via form inputs and page loads.
 
-![b1](https://github.com/user-attachments/assets/532c4d62-de4f-4e90-91ab-23bd876ae46a)
 
 
 
