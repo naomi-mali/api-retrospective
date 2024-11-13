@@ -4,7 +4,13 @@
 ![tttttttttttttttttttttttttttt](https://github.com/user-attachments/assets/78994cff-6838-4fb2-8c75-ba6b2919c6de)
 
 
--
+----
+- [Backend Repo](https://github.com/naomi-mali/api-retrospective)
+- [Frontend Repo](https://github.com/naomi-mali/retrospective)
+- [Frontend Deployed](https://retrospective-62d99ef7d5c6.herokuapp.com/)
+- [Backend Deployed](https://api-retrospective-3d1e13d99a31.herokuapp.com/)
+
+----
 
 ## Project Overview
 ---
