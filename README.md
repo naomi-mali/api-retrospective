@@ -1,4 +1,9 @@
 # Retrospective
+
+
+![tttttttttttttttttttttttttttt](https://github.com/user-attachments/assets/78994cff-6838-4fb2-8c75-ba6b2919c6de)
+
+
 -
 
 ## Project Overview
