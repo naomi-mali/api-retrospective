@@ -41,11 +41,11 @@ class ProfileDetailViewTests(APITestCase):
     def test_logged_in_user_cant_update_other_users_profile(self):
         self.client.login(username='tester', password='test123')
         response = self.client.put('/profiles/2/', {'bio': 'Updated bio 2'})
-        self.assertEqual(response.status_code, status. HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_logged_out_user_cant_update_users_profile(self):
         response = self.client.put('/profiles/1/', {'bio': 'Updated bio'})
-        self.assertEqual(response.status_code, status. HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_logged_in_user_can_log_out(self):
         self.client.login(username='tester', password='test123')

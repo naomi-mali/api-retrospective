@@ -8,13 +8,20 @@ from .settings import (
 
 @api_view()
 def root_route(request):
+    """
+    Root route for the API, providing a welcome message.
+    """
     return Response({
         "message": "Welcome to my API!"
     })
 
+
 # dj-rest-auth logout view fix
 @api_view(['POST'])
 def logout_route(request):
+    """
+    Custom logout route to clear JWT authentication cookies.
+    """
     response = Response()
     response.set_cookie(
         key=JWT_AUTH_COOKIE,

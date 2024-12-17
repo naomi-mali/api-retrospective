@@ -4,6 +4,10 @@ from .models import Chat, Message
 
 
 class ChatSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Chat model, including sender, receiver,
+    last message, and unread message count.
+    """
     sender = serializers.ReadOnlyField(source='sender.username')
     sender_image = serializers.ReadOnlyField(source='sender.profile.image.url')
     receiver_username = serializers.ReadOnlyField(source='receiver.username')
@@ -19,7 +23,8 @@ class ChatSerializer(serializers.ModelSerializer):
     def get_unread_message_count(self, obj):
         user = self.context['request'].user
         message_count = obj.messages.filter(
-            chat=obj, chat__sender=user, seen=False).count()
+            chat=obj, chat__sender=user, seen=False
+        ).count()
         return message_count
 
     def get_created_at(self, obj):
@@ -42,6 +47,10 @@ class ChatSerializer(serializers.ModelSerializer):
 
 
 class MessageSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Message model, including sender, receiver,
+    message content, and timestamp.
+    """
     sender = serializers.ReadOnlyField(source='sender.username')
     receiver = serializers.ReadOnlyField(source='get_receiver_username')
     created_at = serializers.SerializerMethodField()

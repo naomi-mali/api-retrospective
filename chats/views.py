@@ -4,12 +4,11 @@ from rest_framework.exceptions import ValidationError, PermissionDenied
 from api_retrospective.permissions import IsSenderOrReceiver, IsChatSender
 from .models import Chat, Message
 from .serializers import ChatSerializer, MessageSerializer
-from rest_framework.permissions import IsAuthenticated
 
 
 class ChatList(generics.ListCreateAPIView):
     """
-    List all chats or create a new chat instance.
+    List all chats for the authenticated user or create a new chat.
     """
     serializer_class = ChatSerializer
     permission_classes = [permissions.IsAuthenticated, IsSenderOrReceiver]
@@ -21,19 +20,20 @@ class ChatList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         sender = self.request.user
         receiver = serializer.validated_data['receiver']
-        
+
+        # Check for existing chat between the users
         if Chat.objects.filter(sender=sender, receiver=receiver).exists() or \
            Chat.objects.filter(sender=receiver, receiver=sender).exists():
             raise ValidationError({'detail': 'Chat with this user already exists.'})
-        elif sender == receiver:
-            raise ValidationError({'detail': 'You cannot send a message to yourself.'})
+        if sender == receiver:
+            raise ValidationError({'detail': 'You cannot start a chat with yourself.'})
 
         serializer.save(sender=sender, receiver=receiver)
 
 
 class ChatDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve, update or delete a chat instance.
+    Retrieve, update, or delete a chat instance.
     """
     serializer_class = ChatSerializer
     permission_classes = [permissions.IsAuthenticated, IsSenderOrReceiver, IsChatSender]
@@ -45,7 +45,7 @@ class ChatDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class MessageList(generics.ListCreateAPIView):
     """
-    List all messages or create a new message instance within a chat.
+    List all messages in a chat or create a new message within the chat.
     """
     serializer_class = MessageSerializer
     permission_classes = [permissions.IsAuthenticated, IsSenderOrReceiver]
@@ -53,7 +53,6 @@ class MessageList(generics.ListCreateAPIView):
     def get_queryset(self):
         user = self.request.user
         chat_id = self.kwargs['pk']
-        
         try:
             chat = Chat.objects.get(id=chat_id)
             if chat.sender == user or chat.receiver == user:
@@ -66,7 +65,7 @@ class MessageList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         chat_id = self.kwargs['pk']
         user = self.request.user
-        
+
         try:
             chat = Chat.objects.get(id=chat_id)
             if chat.sender == user or chat.receiver == user:
@@ -96,7 +95,6 @@ class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
 
             message = chat.messages.get(pk=message_id)
             return message
-
         except Chat.DoesNotExist:
             raise ValidationError({'detail': 'Chat does not exist.'})
         except Message.DoesNotExist:
@@ -107,11 +105,11 @@ class MessageDetail(generics.RetrieveUpdateDestroyAPIView):
         message = self.get_object()
 
         if message.sender == user:
-            # The sender is allowed to update their message without changing the seen status.
+            # Allow the sender to update their own message.
             serializer.save(seen=False)
         elif message.chat.receiver == user:
-            # Only the receiver can mark the message as seen, not edit it.
+            # Only the receiver can mark the message as seen.
             if 'message' in serializer.validated_data:
-                raise ValidationError({'detail': 'You cannot edit the message you received.'})
+                raise ValidationError({'detail': 'You cannot edit a message you received.'})
             message.seen = True
             message.save()

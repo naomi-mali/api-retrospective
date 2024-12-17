@@ -3,9 +3,9 @@ from .models import Feedback
 from .serializers import FeedbackSerializer
 
 
-
 class FeedbackList(generics.ListCreateAPIView):
-    """Allows users to submit feedback"""
+    """Allows users to submit feedback."""
+    
     queryset = Feedback.objects.all()
     serializer_class = FeedbackSerializer
 

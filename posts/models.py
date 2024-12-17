@@ -42,12 +42,11 @@ class Post(models.Model):
     )
     category = models.CharField(
         max_length=150,
+        choices=categories,
         blank=True,
-        null=True,
-        default=None,
-        choices=categories
+        null=True
     )
-    
+
     class Meta:
         ordering = ['-created_at']
 

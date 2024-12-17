@@ -5,7 +5,9 @@ from posts.models import Post
 
 class Comment(models.Model):
     """
-    Comment model, related to User and Post
+    Comment model related to a User and a Post.
+    The 'owner' is the user who created the comment.
+    The 'post' is the post to which the comment belongs.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

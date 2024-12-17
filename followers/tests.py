@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework.test import APITestCase
 from rest_framework import status
 from followers.models import Follower
-
+from feedback.models import Feedback  # Assuming you have Feedback model in this location
 
 
 class FeedbackListTest(APITestCase):
@@ -20,7 +20,7 @@ class FeedbackListTest(APITestCase):
 
     def test_non_logged_in_user_can_submit_feedback(self):
         """
-        Test that a non logged in user can submit feedback
+        Test that a non-logged-in user can submit feedback.
         """
         response = self.client.post('/feedback/', {
             'first_name': 'test',
@@ -32,7 +32,7 @@ class FeedbackListTest(APITestCase):
 
     def test_logged_in_user_can_submit_feedback(self):
         """
-        Test that a logged in user can submit feedback
+        Test that a logged-in user can submit feedback.
         """
         self.client.login(username='testuser', password='testpassword')
         response = self.client.post('/feedback/', {
@@ -45,7 +45,7 @@ class FeedbackListTest(APITestCase):
 
     def test_user_cannot_submit_feedback_without_content(self):
         """
-        Test that a user cannot submit feedback without content
+        Test that a user cannot submit feedback without content.
         """
         self.client.login(username='testuser', password='testpassword')
         response = self.client.post('/feedback/', {
@@ -56,9 +56,9 @@ class FeedbackListTest(APITestCase):
         })
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-    def tets_user_cannot_submit_feedback_without_email(self):
+    def test_user_cannot_submit_feedback_without_email(self):
         """
-        Test that a user cannot submit feedback without an email
+        Test that a user cannot submit feedback without an email.
         """
         self.client.login(username='testuser', password='testpassword')
         response = self.client.post('/feedback/', {
@@ -71,7 +71,7 @@ class FeedbackListTest(APITestCase):
 
     def test_user_can_view_feedback(self):
         """
-        Test that a user can view feedback
+        Test that a user can view feedback.
         """
         self.client.login(username='testuser', password='testpassword')
         response = self.client.get('/feedback/')

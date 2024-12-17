@@ -65,7 +65,19 @@ Retrospective is a unique social media platform designed to showcase Polaroid-st
 13. [Heroku Deployment](#heroku-deployment)
 14. [Python Packages](#pythonpackages)
     -[ Installed as package dependcies with above installations](#installedaspackagedependcieswithaboveinstallations)
-16. [Testing](#testing)    
+15. [Testing](#testing)
+  - [Comments](#comments)
+  - [Chats](#chats)
+  - [Feedback](#feedback)
+  - [Followers](#followers)
+  - [Posts](#posts)
+  - [likes](#likes)
+  - [Profiles](#profiles)
+  [Manual Testing](#manual-testing)
+  [URL Testing](#URL-testing)
+  [CRUD Testing](CRUD-testing)
+  [Valodation](#validation)
+
 
 ---
 
@@ -730,11 +742,254 @@ A tool for parsing, formatting, and reformatting SQL statements, which Django us
 
 In this project, each installed app includes a `tests.py` file, allowing for organized and specific unit tests for each app’s functionality. This structure ensures:
 
+
 - #### Isolation of Tests: Each app's tests target only its specific features, making debugging and development more manageable.
 - #### Modular Testing: You can run tests for individual apps independently, aiding in continuous integration and targeted test runs.
 - #### Comprehensive Coverage: Testing each app’s unique components promotes full code coverage, improving project reliability and reducing bugs.
 
 The API was tested locally during development. Core testing was conducted as part of the frontend repos, where real APIs were tested manually via form inputs and page loads.
+
+The following tests were created:
+
+Here is the list of all the tests made in your `tests.py` file:
+
+#### Comments
+---
+
+1. **Test non-logged-in user cannot create a comment**  
+   - **Description**: Ensures that a non-logged-in user cannot create a comment.
+
+2. **Test logged-in user can create a comment**  
+   - **Description**: Ensures that a logged-in user can successfully create a comment.
+
+3. **Test user cannot create a comment with no content**  
+   - **Description**: Ensures that a user cannot create a comment if the content is empty.
+
+4. **Test user can get comment by ID**  
+   - **Description**: Ensures that a user can retrieve a comment by its ID.
+
+5. **Test user cannot get comment with invalid ID**  
+   - **Description**: Ensures that a user cannot retrieve a comment with an invalid ID.
+
+6. **Test user can update their own comment**  
+   - **Description**: Ensures that a user can update their own comment.
+
+7. **Test user cannot update someone else's comment**  
+   - **Description**: Ensures that a user cannot update someone else's comment.
+
+8. **Test user can delete their own comment**  
+   - **Description**: Ensures that a user can delete their own comment.
+
+9. **Test user cannot delete someone else's comment**  
+   - **Description**: Ensures that a user cannot delete someone else's comment.
+
+#### Chats 
+---
+
+1. **Test logged-in user can list chats**  
+   - **Description**: Ensures that a logged-in user can list their chats.
+
+2. **Test logged-in user can create a chat**  
+   - **Description**: Ensures that a logged-in user can create a chat.
+
+3. **Test non-logged-in user cannot create a chat**  
+   - **Description**: Ensures that a non-logged-in user cannot create a chat.
+
+### **ChatDetailViewTests**
+4. **Test user can retrieve chat using valid ID**  
+   - **Description**: Ensures that a user can retrieve a chat by its valid ID.
+
+5. **Test user cannot retrieve chat using invalid ID**  
+   - **Description**: Ensures that a user cannot retrieve a chat using an invalid ID (returns 404).
+
+6. **Test user can update their own chat**  
+   - **Description**: Ensures that a user can update their own chat.
+
+7. **Test user cannot update another user's chat**  
+   - **Description**: Ensures that a user cannot update another user's chat (returns 403).
+
+8. **Test user can delete their own chat**  
+   - **Description**: Ensures that a user can delete their own chat.
+
+9. **Test user cannot delete another user's chat**  
+   - **Description**: Ensures that a user cannot delete another user's chat (returns 403).
+
+### Feedback
+---
+
+1. **Test non-logged-in user can submit feedback**  
+   - **Description**: Ensures that a non-logged-in user can submit feedback.
+
+2. **Test logged-in user can submit feedback**  
+   - **Description**: Ensures that a logged-in user can submit feedback.
+
+3. **Test user cannot submit feedback without content**  
+   - **Description**: Ensures that a user cannot submit feedback without content (returns 400).
+
+4. **Test user cannot submit feedback without an email**  
+   - **Description**: Ensures that a user cannot submit feedback without an email (returns 400).
+
+5. **Test user can view feedback**  
+   - **Description**: Ensures that a user can view feedback.
+
+6. **Test feedback submission fields are required**  
+   - **Description**: Ensures that missing required fields (e.g., first name, last name) return a 400 error.
+
+
+### Followers
+---
+
+
+1. **Test non-logged-in user can submit feedback**  
+   - **Description**: Ensures that a non-logged-in user can submit feedback.
+
+2. **Test logged-in user can submit feedback**  
+   - **Description**: Ensures that a logged-in user can submit feedback.
+
+3. **Test user cannot submit feedback without content**  
+   - **Description**: Ensures that a user cannot submit feedback without content (returns 400).
+
+4. **Test user cannot submit feedback without an email**  
+   - **Description**: Ensures that a user cannot submit feedback without an email (returns 400).
+
+5. **Test user can view feedback**  
+   - **Description**: Ensures that a logged-in user can view feedback.
+
+### Posts
+---
+
+
+1. **Test can list posts**  
+   - **Description**: Ensures that posts can be listed, checking for pagination, returning posts, and verifying post content.
+
+2. **Test logged-in user can create post**  
+   - **Description**: Ensures that a logged-in user can create a post, checking the post creation and validating the response.
+
+3. **Test user not logged in can't create post**  
+   - **Description**: Ensures that a non-logged-in user cannot create a post (returns 403).
+
+4. **Test create post missing fields**  
+   - **Description**: Ensures that creating a post with missing fields returns a 400 Bad Request.
+
+### **PostDetailViewTests**
+
+1. **Test can retrieve post using valid ID**  
+   - **Description**: Ensures that a post can be retrieved using a valid post ID (returns correct post data).
+
+2. **Test can't retrieve post using invalid ID**  
+   - **Description**: Ensures that an invalid post ID returns a 404 Not Found error.
+
+3. **Test user can update own post**  
+   - **Description**: Ensures that a user can update their own post (validates changes and response).
+
+4. **Test user can't update another user's post**  
+   - **Description**: Ensures that a user cannot update another user's post (returns 403 Forbidden).
+
+5. **Test user can delete own post**  
+   - **Description**: Ensures that a user can delete their own post and that the post count is updated.
+
+6. **Test user can't delete another user's post**  
+   - **Description**: Ensures that a user cannot delete another user's post (returns 403 Forbidden).
+
+### Likes
+---
+
+
+1. **Test user can view all likes**  
+   - **Description**: Ensures that a user can view all likes with a successful 200 OK response.
+
+2. **Test logged-in user can like a post**  
+   - **Description**: Ensures that a logged-in user can like a post, creating a new like and returning a 201 Created response.
+
+3. **Test logged-in user can't like a post twice**  
+   - **Description**: Ensures that a logged-in user cannot like the same post twice, returning a 400 Bad Request response.
+
+4. **Test logged-out user can't like a post**  
+   - **Description**: Ensures that a logged-out user cannot like a post, returning a 403 Forbidden response.
+
+### **LikeDetailViewTests**
+
+1. **Test user can view a like using valid ID**  
+   - **Description**: Ensures that a user can view a like using a valid like ID, returning a 200 OK response.
+
+2. **Test user can't view a like using invalid ID**  
+   - **Description**: Ensures that an invalid like ID returns a 404 Not Found response.
+
+3. **Test logged-in user can delete their own like**  
+   - **Description**: Ensures that a logged-in user can delete their own like, returning a 204 No Content response.
+
+4. **Test logged-in user can't delete other users' like**  
+   - **Description**: Ensures that a logged-in user cannot delete another user's like, returning a 403 Forbidden response.
+
+### Profiles
+
+
+1. **Test can list all profiles**  
+   - **Description**: Ensures that all profiles can be listed with a successful 200 OK response.
+
+### **ProfileDetailViewTests**
+
+1. **Test can view profile using valid ID**  
+   - **Description**: Ensures that a profile can be viewed using a valid profile ID, returning a 200 OK response.
+
+2. **Test can't view profile using invalid ID**  
+   - **Description**: Ensures that an invalid profile ID returns a 404 Not Found response.
+
+3. **Test logged-in user can update their own profile**  
+   - **Description**: Ensures that a logged-in user can update their own profile, returning a 200 OK response.
+
+4. **Test logged-in user can't update other users' profile**  
+   - **Description**: Ensures that a logged-in user cannot update another user's profile, returning a 403 Forbidden response.
+
+5. **Test logged-out user can't update users' profile**  
+   - **Description**: Ensures that a logged-out user cannot update any user's profile, returning a 403 Forbidden response.
+
+6. **Test logged-in user can log out**  
+   - **Description**: Ensures that a logged-in user can log out successfully, returning a 200 OK response.
+
+
+---
+
+## Manual Testing
+
+### URL Testing
+
+The following URLs were tested:
+
+| URL         | Result |
+|-------------|--------|
+| /           | Pass   |
+| /comments   | Pass   |
+| /feedback   | Pass   |
+| /followers  | Pass   |
+| /posts      | Pass   |
+| /likes      | Pass   |
+| /locations  | Pass   |
+| /profiles   | Pass   |
+| /chats      | Pass   |
+| /report     | Pass   |
+
+### CRUD Testing
+
+All apps were tested for full Create, Read, Update and Delete functionality.
+
+| App        | Create | Read | Update | Delete |
+|------------|--------|------|--------|--------|
+| Comments   | Y      | Y    | Y      | Y      |
+| Feedback   | Y      | Y    | Y      | Y      |
+| Followers  | Y      | Y    | Y      | Y      |
+| Posts      | Y      | Y    | Y      | Y      |
+| Likes      | Y      | Y    | Y      | Y      |
+| Locations  | Y      | Y    | Y      | Y      |
+| Profiles   | Y      | Y    | Y      | Y      |
+| Chats      | Y      | Y    | Y      | Y      |
+| Report     | Y      | Y    | Y      | Y      |
+
+
+## Validation
+
+- All files were passed through the [Code Institute PEP8 Validation Tool](https://pep8ci.herokuapp.com/) and came back with no errors, with the exception of some lines being too long, I decided to leave them in.
+
 
 
 

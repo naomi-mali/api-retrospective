@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
+from comments.models import Comment
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -11,8 +12,7 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-    
-    
+
     def validate_image(self, value):
         """
         Validates that the image is not larger than 2MB,
@@ -33,13 +33,24 @@ class PostSerializer(serializers.ModelSerializer):
     def get_like_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
-            like = Like.objects.filter(
-                owner=user, post=obj
-            ).first()
+            like = Like.objects.filter(owner=user, post=obj).first()
             return like.id if like else None
-        return None    
- 
+        return None
+
+    def to_representation(self, instance):
+        """
+        Overrides the default to_representation to add dynamically calculated fields.
+        """
+        # Prefetch related data for likes and comments
+        self.context['request'].user = instance.owner
+        representation = super().to_representation(instance)
         
+        # Calculates likes_count and comments_count dynamically if not already present
+        representation['likes_count'] = Like.objects.filter(post=instance).count()
+        representation['comments_count'] = Comment.objects.filter(post=instance).count()
+
+        return representation
+
     class Meta:
         model = Post
         fields = [

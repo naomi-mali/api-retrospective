@@ -9,7 +9,7 @@ from api_retrospective.permissions import IsOwnerOrReadOnly
 class ProfileList(generics.ListAPIView):
     """
     List all profiles.
-    No create view as profile creation is handled by django signals.
+    No create view as profile creation is handled by Django signals.
     """
     queryset = Profile.objects.annotate(
         posts_count=Count('owner__post', distinct=True),
@@ -34,10 +34,9 @@ class ProfileList(generics.ListAPIView):
     ]
 
 
-
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
-    Retrieve or update a profile if you're the owner.
+    Retrieves or updates a profile if you're the owner.
     """
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.annotate(
@@ -46,5 +45,3 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
         following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
-
-

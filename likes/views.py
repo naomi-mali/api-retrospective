@@ -13,12 +13,15 @@ class LikeList(generics.ListCreateAPIView):
     queryset = Like.objects.all()
 
     def perform_create(self, serializer):
+        """
+        Associates the current logged-in user as the owner of the like.
+        """
         serializer.save(owner=self.request.user)
 
 
 class LikeDetail(generics.RetrieveDestroyAPIView):
     """
-    Retrieve a like or delete it by id if you own it.
+    Retrieve a like by id or delete it if the user owns it.
     """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = LikeSerializer

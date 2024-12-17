@@ -11,7 +11,8 @@ class LikeListViewTests(APITestCase):
     """
     def setUp(self):
         tester = User.objects.create_user(
-            username='tester', password='test123')
+            username='tester', password='test123'
+        )
         User.objects.create_user(username='tester2', password='test321')
         Post.objects.create(owner=tester, title='Test title')
         test_post = Post.objects.get(title='Test title')
@@ -47,9 +48,11 @@ class LikeDetailViewTests(APITestCase):
     """
     def setUp(self):
         tester = User.objects.create_user(
-            username='tester', password='test123')
+            username='tester', password='test123'
+        )
         tester2 = User.objects.create_user(
-            username='tester2', password='test321')
+            username='tester2', password='test321'
+        )
         Post.objects.create(owner=tester, title='Test title')
         test_post = Post.objects.get(title='Test title')
         Like.objects.create(owner=tester, post=test_post)
