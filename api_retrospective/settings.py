@@ -61,13 +61,15 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+DEBUG = 'DEV'in os.environ
+
+
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     os.environ.get('ALLOWED_HOST'),
     'api-retrospective-3d1e13d99a31.herokuapp.com',
-    '8000-naomimali-apiretrospect-hrhy1mlhpwa.ws.codeinstitute-ide.net',
+    '8000-naomimali-apiretrospect-0oajaw8di5e.ws.codeinstitute-ide.net',
 ]
 
 if "CLIENT_ORIGIN" in os.environ:

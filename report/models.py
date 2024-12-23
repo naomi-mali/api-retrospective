@@ -18,6 +18,7 @@ class Report(models.Model):
     ]
     
     title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
     user = models.ForeignKey(User, related_name='report', on_delete=models.CASCADE)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='spam')
     comment = models.TextField(blank=True)
